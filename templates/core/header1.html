@@ -1,0 +1,159 @@
+{% load static %}
+    <div class="accordeon-sec1 col-lg-12">
+        <div class="wrapper">
+            <div class="accordion">
+                <div class="accordion-item">
+                <div class="container">
+                    <div class="accordion-item__content">
+                    <div class="row">
+                    {% for i in off %}
+                    <div class="col-lg-3 text-center">
+                    <span class="badge bg-success">{{i.off}}</span>
+                        <h1>{{i.title}}</h1>
+                        <small>{{i.subtitle}}</small>
+                        <p>Rs. {{i.price}} </p>
+                        <small>{{i.desc}} </small> <br>
+                       <br> <a type="button" href="{{i.url}}" class="btn btn-primary">{{i.button_text}}</a> <br>
+                        <small>{{i.small_desc}} </small>
+                    </div>
+                    {% endfor %}
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <section class="navbar-statrs pt-3 pb-4">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                <form class="input-group mt-2" method='get' action='{% url 'search' %}'>
+                <input type="search" name="search" id="search"  class="form-control" placeholder="Enter the course you want to enroll" maxlength="255">
+                <div class="input-group-append">
+                <button class="btn btn-success" type="submit">
+                <span class="fa fa-search form-control-feedback"></span>
+                </button>
+                </form>
+                    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'all-courses' %}">Courses</a>
+                        </li>
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'alltutors' %}">TUTORS</a>
+                        </li>
+
+                        {% if user.is_authenticated %}
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'profile' %}">{{user.first_name}}</a>
+                        </li>
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'cart' %}"><i class="fa fa-shopping-crt" aria-hidden="true"></i>Your Course </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'userlogin' %}">Log In</a>
+                        </li>
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'usersignup' %}">Sign Up</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+
+
+    <section class="second-navbar">
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-10">
+            <nav class="navbar navbar-light navbar-expand-lg mainmenu">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                            <a href="{% url 'job_application' %}" class="apply-link">Apply as a Tutor</a>
+
+
+                            <a href="{% url 'tutor_login' %}" class="login-link">Tutor Login</a>
+
+                                <ul class="dropdown-menu drop-6 exdrop2 drop2" aria-labelledby="navbarDropdown1">
+
+                            </a>
+                          <ul class="dropdown-menu drop3" aria-labelledby="navbarDropdown2">
+                            <div class="masterbox hidden-xs">
+                              <div class="title-section">
+                                <hr>
+                                <span class="coursetype"></span>
+                              </div>
+                              <div class="images-text drop4">
+
+
+                                <span>
+                                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                </span>
+                                <span style="padding-left:25px; font-weight:600;">
+
+                                </span>
+                                </a>
+
+                              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                  </div>
+
+                                  <div class="carousel-item">
+                                  </div>
+
+                                  <div class="carousel-item">
+                                  </div>
+
+                                </div>
+                              </div>
+
+                              </div>
+                             </div>
+                            </a>
+                          </ul>
+                        </li>
+                                </ul>
+                              </li>
+                              </ul>
+                          </li>
+
+
+
+                              </li>
+
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+            </nav>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 mt-2 ml-auto">
+
+        </div>
+        </div>
+        </div>
+    </section>
+      {% if messages %}
+<div class="alert alert-success alert-dismissible">
+  {% for message in messages %}
+    <p>{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,23 @@
+{% extends 'core/base1.html' %}
+{% block title %} All Tutors {% endblock title %}
+{% load static %}
+{% block body %}
+
+    <!-----Recent Additions--- -->
+    <section class="Recent-Addition">
+        <div class="container" >
+            <div class="row">
+            {% for tutor in tutors %}
+               <div class="col-lg-3 col-md-4 mt-4 mh-200" >
+                    <div class="main-hover-div">
+                        <div class="user-profile-2" style="height:100px">
+                            <li class="col-lg-12 col-md-12">{{ tutor.name }} - {{ tutor.email }} - {{ tutor.phone_number }}</li>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}

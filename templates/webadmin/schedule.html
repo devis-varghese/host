@@ -1,0 +1,12 @@
+{% block content %}
+  <h1>Schedule</h1>
+  {% if schedule %}
+    <ul>
+      {% for s in schedule %}
+        <li>{{ s.start_time }} - {{ s.end_time }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No schedule found.</p>
+  {% endif %}
+{% endblock %}

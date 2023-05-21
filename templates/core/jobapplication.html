@@ -1,0 +1,69 @@
+
+
+
+{% include 'core/base2.html' %}
+{% block content %}
+
+
+{% load crispy_forms_tags %}
+
+<head>
+    <style>
+  /* Style for the form container */
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  /* Style for form input fields */
+  .form-control {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  /* Style for form submit button */
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  /* Style for form submit button on hover */
+  .btn:hover {
+    background-color: #0069d9;
+  }
+
+  /* Style for form heading */
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+</style>
+
+</head>
+<h1>To apply as a tutor the qualifications are:</h1>
+
+<marquee direction="left" scrollamount="10"><p>The person applying for this position must be a certified tutor,Must have at least 2 years of teaching/tutoring experience ,Excellent communication skills ,Ability to work with students of different ages and skill levels</p>
+</marquee>
+  <h1>Job Application Form</h1>
+{% endblock %}
+   <form method='post' enctype="multipart/form-data">
+               {% csrf_token %}
+               {{form|crispy}}
+               {{JobApplicationForm|crispy}}
+                {% if request.GET.next %}
+               <input type="hidden" name="next" value="{{request.GET.next}}">
+               {% endif %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>

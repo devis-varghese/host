@@ -1,0 +1,45 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.135.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.135.0/examples/js/loaders/FBXLoader.js"></script>
+
+</head>
+<body>
+  <div id="vr-scene"></div>
+  <script>
+    const container = document.getElementById('vr-scene');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(container.clientWidth, container.clientHeight);
+container.appendChild(renderer.domElement);
+
+const loader = new THREE.FBXLoader();
+loader.load('/static/models/CLASSROOM.fbx', (model) => {
+  // Set the position and rotation of the model
+  model.position.set(0, 0, 0);
+  model.rotation.set(0, Math.PI / 2, 0);
+
+  // Add the model to the scene
+  scene.add(model);
+});
+
+// Add some lights to the scene
+const ambientLight = new THREE.AmbientLight(0x404040);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(1, 1, 1).normalize();
+scene.add(directionalLight);
+
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+
+animate();
+
+  </script>
+</body>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Study Materials for "{{ allpost.title }}"</h1>
+
+  {% if study_materials %}
+    <ul>
+      {% for material in study_materials %}
+        <li>
+          <a href="{{ material.file.url }}">{{ material.title }}</a>
+          {% if material.desc %}
+            <p>{{ material.desc }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No study materials available.</p>
+  {% endif %}
+{% endblock %}

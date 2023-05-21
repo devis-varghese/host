@@ -1,0 +1,19 @@
+<div class="file-input-with-preview">
+    <div class="preview">
+        {% if widget.value.url %}
+        <a href="{{ widget.value.url }}" target="_blank">
+            <img src="{{ widget.value.url }}" alt="{{ widget.value.name }}">
+        </a>
+        {% endif %}
+    </div>
+    <div class="input">
+        {{ widget.input }}
+        <label for="{{ widget.id_for_label }}">Choose file</label>
+        {% if widget.value.url %}
+        <span class="clear-checkbox">
+            {{ widget.checkbox }}
+            <label for="{{ widget.id_for_label }}_clear">Clear</label>
+        </span>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Live Classes for "{{ allpost.title }}"</h1>
+
+  {% if live_classes %}
+    <ul>
+      {% for live_class in live_classes %}
+        <li>
+          <a href="{{ live_class.video_id }}">{{ live_class.title }}</a>
+          {% if live_class.desc %}
+            <p>{{ live_class.desc }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No live classes available.</p>
+  {% endif %}
+{% endblock %}
