@@ -162,3 +162,4 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 RAZORPAY_API_KEY = 'rzp_test_oE5GrnJfzSUqCP'
 RAZORPAY_API_SECRET_KEY = 'xmxWct8JWngneVWqA3HtLCyZ'
+CSRF_TRUSTED_ORIGINS = ['https://mincc.azurewebsites.net']
